@@ -1,0 +1,314 @@
+<!-- <!DOCTYPE html> -->
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <meta name="author" content="prz" />
+      <meta name="Robots" content="all" />
+      <meta name="keywords" content="prz, 个人博客, " />
+      <meta name="description" content="prz的个人网站，这里有我的作品" />
+      <meta name="msapplication-TileColor" content="#5bbeae" /> <!-- Windows 8 磁贴颜色 -->
+      <meta name="msapplication-TileImage" content="./images/icon/icon.png" />
+      <meta name="msapplication-square70x70logo" content="./images/icon/icon70x70.png" /> <!-- Windows 8 磁贴图标 70*70-->
+      <meta name="msapplication-square150x150logo" content="./images/icon/icon150x150.png" /> <!-- Windows 8 磁贴图标 150*150-->
+      <meta name="msapplication-wide310x150logo" content="./images/icon/icon310x150.png" /> <!-- Windows 8 磁贴图标 310*150-->
+      <meta name="msapplication-square310x310logo" content="./images/icon/icon310x310.png" /> <!-- Windows 8 磁贴图标 310*310-->
+      <meta name="apple-mobile-web-app-title" content="prz"> <!-- 添加到主屏后的标题 -->
+      <meta name="application-name" content="prz" />
+      <meta name="title" content="prz" />
+      <meta property="qc:admins" content="657017602170117526375" />
+      <title>API资源库</title>
+    <!--<link rel="apple-touch-icon" href="./images/icon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./images/icon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./images/icon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" href="./images/icon/apple-touch-icon-precomposed.png" />
+    <link rel="bookmark" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />-->
+    <link rel="stylesheet" type="text/css" href="css/miaoxiaoer.css" />
+    <style>
+      html, body {
+				height: 100%;
+        -moz-user-select: none; /*火狐*/
+        -webkit-user-select: none; /*webkit浏览器*/
+        -ms-user-select: none; /*IE10*/
+        -khtml-user-select: none; /*早期浏览器*/
+        user-select: none;
+				overflow: hidden;
+			}
+			body {
+				background-color: #f7f7f7;
+				margin: 0;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, Microsoft YaHei, '微软雅黑', sans-serif;
+				overflow: hidden;
+			}
+			a {
+				color: #323232;
+			}
+    #mycanvas{
+      position:fixed;
+      left:0px;
+      top:0px;
+      background:#f7f7f7;
+      height:100%;
+      width:100%;
+    }
+			#info {
+				position: absolute;
+				width: 100%;
+				color: #323232;
+				padding: 5px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, Microsoft YaHei, '微软雅黑', sans-serif;
+				font-size: 13px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+			}
+			#menu {
+				position: absolute;
+				bottom: 20px;
+				width: 100%;
+				text-align: center;
+			}
+			.element {
+				width: 360px;
+				height: 280px;
+				box-shadow: 0px 0px 12px rgba(0,0,0,0.5);
+				border: 1px solid rgba(0,0,0,0.25);
+				text-align: center;
+				cursor: pointer;
+				color: rgba(0,0,0,1);
+			}
+			.element:hover {
+				box-shadow: 0px 0px 12px rgba(0,0,0,1);
+				border: 1px solid rgba(0,0,0,1);
+        background: rgba(0,0,0,1);
+			}
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 36px;
+				}
+				.element .symbol {
+					position: absolute;
+					top: 20px;
+					left: 0px;
+					right: 0px;
+					font-size: 60px;
+          line-height:120px;
+					font-weight: bold;
+					text-shadow: 0 0 5px rgba(0,0,0,0.5);
+				}
+				.element:hover .symbol {
+					text-shadow: 0 0 5px rgba(255,255,255,0.5);
+				}
+				.element .details {
+					position: absolute;
+					bottom: 30px;
+					left: 0px;
+					right: 0px;
+					font-size: 36px;
+          line-height:40px;
+				}
+        #hudongdata{
+        display:none;
+        }
+    </style>
+    <script>
+      /* if (window.location.hostname != "localhost") {
+        var _hmt = _hmt || [];
+        (function () {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?568d421432c521768a6b1299dc1010dc";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      } */
+    </script>
+  </head>
+
+  <body>
+    <canvas width="100%" height="100%" id="mycanvas"></canvas>
+    <div id="mycopyright">
+        <a href="index.html" title="prz 2017">prz的个人网站 2017</a>
+        <!--| <a href="http://miaoxiaoer.com/rss.xml" title="订阅 RSS 新闻" target="_blank"><span class='icon icon-rss'></span>RSS</a> | 鲁ICP备09100948号-1-->
+    </div>
+    <div id="mylogo">
+      <a id="mylogoshowbtn" href="javascript:void(0)" title="菜单">
+          <img data="svg/menu" class="my_svg">
+      </a>
+    </div>
+    <ul id="mymenu">
+      <li>
+          <a href="news.html" title="博客">
+              <img data="svg/blogger" class="my_svg">
+          </a>
+      </li>
+        <li>
+            <a href="download.html" title="API">
+                <img data="svg/api" class="my_svg">
+            </a>
+        </li>
+      <li>
+        <a href="about.html" title="关于我">
+            <img data="svg/aboutme" class="my_svg"></svg>
+        </a>
+      </li>
+      <!--<li class="mymenuline"></li>-->
+      <li>
+        <a href="index.html" title="返回首页">
+            <img data="svg/return" class="my_svg"></svg>
+        </a>
+      </li>
+    </ul>
+		<div id="container"></div>
+    <div class="pagedata" id="hudongdata">
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">模拟琴</div>
+          <div class="hudongdata_type">模拟物件</div>
+          <div class="hudongdata_date">2017-5-8</div>
+          <a class="hudongdata_value" href="./t/paino/" title="模拟琴" target="_blank">./t/paino/</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">生成诗</div>
+          <div class="hudongdata_type">生成器</div>
+          <div class="hudongdata_date">2017-4-20</div>
+          <a class="hudongdata_value" href="./t/getpoem/" title="生成诗" target="_blank">./t/getpoem/</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">颜色API</div>
+          <div class="hudongdata_type">API</div>
+          <div class="hudongdata_date">2017-4-17</div>
+          <a class="hudongdata_value" href="./api/getcolor.html" title="颜色API" target="_blank">./api/getcolor.html</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">诗API</div>
+          <div class="hudongdata_type">API</div>
+          <div class="hudongdata_date">2017-4-17</div>
+          <a class="hudongdata_value" href="./api/getpoem.html" title="诗API" target="_blank">./api/getpoem.html</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">画笔</div>
+          <div class="hudongdata_type">在线涂鸦</div>
+          <div class="hudongdata_date">2017-3-31</div>
+          <a class="hudongdata_value" href="./t/painter/" title="画笔" target="_blank">画笔</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">画画</div>
+          <div class="hudongdata_type">生成器</div>
+          <div class="hudongdata_date">2017-2-24</div>
+          <a class="hudongdata_value" href="./t/painting/" title="画画" target="_blank">画画</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">硬币2</div>
+          <div class="hudongdata_type">模拟物件</div>
+          <div class="hudongdata_date">2017-1-29</div>
+          <a class="hudongdata_value" href="./t/coin2/" title="硬币2" target="_blank">硬币2</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">飞翔喵</div>
+          <div class="hudongdata_type">游戏</div>
+          <div class="hudongdata_date">2017-1-25</div>
+          <a class="hudongdata_value" href="./t/flappymiao/" title="飞翔喵" target="_blank">飞翔喵</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">灵感题目</div>
+          <div class="hudongdata_type">生成器</div>
+          <div class="hudongdata_date">2016-11-21</div>
+          <a class="hudongdata_value" href="./t/gettitle/" title="灵感题目" target="_blank">灵感题目</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">漫画框3</div>
+          <div class="hudongdata_type">绘制漫画框</div>
+          <div class="hudongdata_date">2016-10-31</div>
+          <a class="hudongdata_value" href="./t/comicbox3/" title="漫画框3" target="_blank">漫画框3</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">漫画框2</div>
+          <div class="hudongdata_type">绘制漫画框</div>
+          <div class="hudongdata_date">2016-10-25</div>
+          <a class="hudongdata_value" href="./t/comicbox2/" title="漫画框2" target="_blank">漫画框2</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">漫画框</div>
+          <div class="hudongdata_type">绘制漫画框</div>
+          <div class="hudongdata_date">2016-10-25</div>
+          <a class="hudongdata_value" href="./t/comicbox/" title="漫画框" target="_blank">漫画框</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">迷宫</div>
+          <div class="hudongdata_type">图测试</div>
+          <div class="hudongdata_date">2016-10-23</div>
+          <a class="hudongdata_value" href="./t/maze/" title="迷宫" target="_blank">迷宫</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">硬币</div>
+          <div class="hudongdata_type">模拟物件</div>
+          <div class="hudongdata_date">2016-9-28</div>
+          <a class="hudongdata_value" href="./coin.html" title="硬币" target="_blank">硬币</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">名字API</div>
+          <div class="hudongdata_type">API</div>
+          <div class="hudongdata_date">2016-7-14</div>
+          <a class="hudongdata_value" href="./api/getname.html" title="名字API" target="_blank">./api/getname.html</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">密码API</div>
+          <div class="hudongdata_type">API</div>
+          <div class="hudongdata_date">2016-7-14</div>
+          <a class="hudongdata_value" href="./api/getpassword.html" title="密码API" target="_blank">./api/getpassword.html</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">miaog.js</div>
+          <div class="hudongdata_type">JS类库</div>
+          <div class="hudongdata_date">2016-7-14</div>
+          <a class="hudongdata_value" href="./t/miaog/" title="miaog.js" target="_blank">miaog.js</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">密码</div>
+          <div class="hudongdata_type">生成器</div>
+          <div class="hudongdata_date">2015-8-6</div>
+          <a class="hudongdata_value" href="./t/getpassword/" title="密码" target="_blank">密码</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">名字</div>
+          <div class="hudongdata_type">生成器</div>
+          <div class="hudongdata_date">2015-8-6</div>
+          <a class="hudongdata_value" href="./t/getname/" title="名字" target="_blank">名字</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">调色板</div>
+          <div class="hudongdata_type">颜色组合</div>
+          <div class="hudongdata_date">2015-11-2</div>
+          <a class="hudongdata_value" href="./t/miaoxiaoerpalette/" title="调色板" target="_blank">调色板</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">颜色日历</div>
+          <div class="hudongdata_type">颜色组合</div>
+          <div class="hudongdata_date">2015-12-17</div>
+          <a class="hudongdata_value" href="./t/colorcalendar/" title="颜色日历" target="_blank">颜色日历</a>
+        </div>
+        <div class="hudongdata_item">
+          <div class="hudongdata_title">在线配色</div>
+          <div class="hudongdata_type">颜色组合</div>
+          <div class="hudongdata_date">2015-11-2</div>
+          <a class="hudongdata_value" href="./t/coloronline/" title="在线配色" target="_blank">在线配色</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/lib/jquery.js"></script> 
+    <script type="text/javascript" src="js/hm.js"></script> 
+    <script type="text/javascript" src="js/lib/jquerycookie.js"></script> 
+    <script type="text/javascript" src="js/lib/jqueryeasing.js"></script> 
+    <script type="text/javascript" src="js/lib/jqueryresize.js"></script> 
+    <script type="text/javascript" src="js/lib/libs/tween.min.js"></script> 
+    <script type="text/javascript" src="js/lib/three.js"></script>
+    <script type="text/javascript" src="js/lib/controls/TrackballControls.js"></script> 
+    <script type="text/javascript" src="js/lib/renderers/CSS3DRenderer.js"></script>
+    <script type="text/javascript" src="js/lib/Detector.js"></script>
+    <script type="text/javascript" src="js/lib/RequestAnimationFrame.js"></script> 
+    <script type="text/javascript" src="js/api.js"></script>
+  </body>
+</html>
