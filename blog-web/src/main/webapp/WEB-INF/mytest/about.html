@@ -1,0 +1,275 @@
+<!-- <!DOCTYPE html> -->
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <meta name="author" content="prz" />
+      <meta name="Robots" content="all" />
+      <meta name="keywords" content="prz, 个人博客, " />
+      <meta name="description" content="prz的个人网站，这里有我的作品" />
+      <meta name="msapplication-TileColor" content="#5bbeae" /> <!-- Windows 8 磁贴颜色 -->
+      <meta name="msapplication-TileImage" content="./images/icon/icon.png" />
+      <meta name="msapplication-square70x70logo" content="./images/icon/icon70x70.png" /> <!-- Windows 8 磁贴图标 70*70-->
+      <meta name="msapplication-square150x150logo" content="./images/icon/icon150x150.png" /> <!-- Windows 8 磁贴图标 150*150-->
+      <meta name="msapplication-wide310x150logo" content="./images/icon/icon310x150.png" /> <!-- Windows 8 磁贴图标 310*150-->
+      <meta name="msapplication-square310x310logo" content="./images/icon/icon310x310.png" /> <!-- Windows 8 磁贴图标 310*310-->
+      <meta name="apple-mobile-web-app-title" content="prz"> <!-- 添加到主屏后的标题 -->
+      <meta name="application-name" content="prz" />
+      <meta name="title" content="prz" />
+      <meta property="qc:admins" content="657017602170117526375" />
+      <title>关于我</title>
+    <!--<link rel="apple-touch-icon" href="./images/icon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./images/icon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./images/icon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" href="./images/icon/apple-touch-icon-precomposed.png" />
+    <link rel="bookmark" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />-->
+    <link rel="stylesheet" type="text/css" href="css/miaoxiaoer.css" />
+    
+     <!-- GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet" type="text/css">
+        <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css"/>
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+        <!-- PAGE LEVEL PLUGIN STYLES -->
+        <link href="vendor/css/animate.css" rel="stylesheet">
+
+        <!-- THEME STYLES -->
+        <link href="vendor/css/layout.min.css" rel="stylesheet" type="text/css"/>
+    
+    <style>
+      html, body {
+				height: 100%;
+        -moz-user-select: none; /*火狐*/
+        -webkit-user-select: none; /*webkit浏览器*/
+        -ms-user-select: none; /*IE10*/
+        -khtml-user-select: none; /*早期浏览器*/
+        user-select: none;
+				/* overflow: hidden; */
+			}
+			body {
+				background-color: #f7f7f7;
+				margin: 0;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, Microsoft YaHei, '微软雅黑', sans-serif;
+				/* overflow: hidden; */
+			}
+			a {
+				color: #323232;
+			}
+    #mycanvas{
+      position:fixed;
+      left:0px;
+      top:0px;
+      background:#f7f7f7;
+      height:100%;
+      width:100%;
+    }
+			#info {
+				position: absolute;
+				width: 100%;
+				color: #323232;
+				padding: 5px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, Microsoft YaHei, '微软雅黑', sans-serif;
+				font-size: 13px;
+				font-weight: bold;
+				text-align: center;
+				z-index: 1;
+			}
+			#menu {
+				position: absolute;
+				bottom: 20px;
+				width: 100%;
+				text-align: center;
+			}
+			.element {
+				width: 360px;
+				height: 280px;
+				box-shadow: 0px 0px 12px rgba(0,0,0,0.5);
+				border: 1px solid rgba(0,0,0,0.25);
+				text-align: center;
+				cursor: pointer;
+				color: rgba(0,0,0,1);
+			}
+			.element:hover {
+				box-shadow: 0px 0px 12px rgba(0,0,0,1);
+				border: 1px solid rgba(0,0,0,1);
+        background: rgba(0,0,0,1);
+			}
+				.element .number {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					font-size: 36px;
+				}
+				.element .symbol {
+					position: absolute;
+					top: 20px;
+					left: 0px;
+					right: 0px;
+					font-size: 60px;
+          line-height:120px;
+					font-weight: bold;
+					text-shadow: 0 0 5px rgba(0,0,0,0.5);
+				}
+				.element:hover .symbol {
+					text-shadow: 0 0 5px rgba(255,255,255,0.5);
+				}
+				.element .details {
+					position: absolute;
+					bottom: 30px;
+					left: 0px;
+					right: 0px;
+					font-size: 36px;
+          line-height:40px;
+				}
+        #hudongdata{
+        display:none;
+        }
+        .my_p{color: #505e49 !important;}
+        
+    </style>
+    <script>
+      /* if (window.location.hostname != "localhost") {
+        var _hmt = _hmt || [];
+        (function () {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?568d421432c521768a6b1299dc1010dc";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      } */
+    </script>
+  </head>
+
+  <body>
+    <canvas width="100%" height="100%" id="mycanvas"></canvas>
+    <div id="mycopyright">
+        <a href="index.html" title="prz 2017">prz的个人网站 2017</a>
+        <!--| <a href="http://miaoxiaoer.com/rss.xml" title="订阅 RSS 新闻" target="_blank"><span class='icon icon-rss'></span>RSS</a> | 鲁ICP备09100948号-1-->
+    </div>
+    <div id="mylogo">
+      <a id="mylogoshowbtn" href="javascript:void(0)" title="菜单">
+          <img data="svg/menu" class="my_svg">
+      </a>
+    </div>
+    <ul id="mymenu">
+      <li>
+          <a href="news.html" title="博客">
+              <img data="svg/blogger" class="my_svg">
+          </a>
+      </li>
+        <li>
+            <a href="download.html" title="API">
+                <img data="svg/api" class="my_svg">
+            </a>
+        </li>
+      <li>
+        <a href="about.html" title="关于我">
+            <img data="svg/aboutme" class="my_svg"></svg>
+        </a>
+      </li>
+      <!--<li class="mymenuline"></li>-->
+      <li>
+        <a href="index.html" title="返回首页">
+            <img data="svg/return" class="my_svg"></svg>
+        </a>
+      </li>
+    </ul>
+    <div id="container"></div>
+    <div id="about_new">
+            <div class="container content-lg">
+                <div class="row">
+                    <div class="col-sm-3 sm-margin-b-30">
+                        <div class="text-right sm-text-left">
+                            <h2 class="margin-b-0">关于我</h2>
+                            <p class="my_p">What I am all about.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-sm-offset-1">
+                        <div class="margin-b-60">
+                            <p class="my_p">我是一名程序员，又被叫做码农，俗称搬砖的。主要从事Java开发</p>
+                            <p class="my_p">喜欢阅读，并不热爱运动，同时对世界充满好奇</p>
+                            <p class="my_p">I love waking up in the morning and not knowing what’s going to happen, or who I’m going to meet, where I’m going to wind up。</p>
+                        </div>
+
+                        <!-- Progress Box -->
+                        <div class="progress-box">
+                            <h5>JAVA <span class="color-heading pull-right">70%</span></h5>
+                            <div class="progress" style="background-color: #4aa6e8">
+                                <div class="progress-bar bg-color-base" role="progressbar" data-width="70" style="width: 70%;background: #592382!important;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-box">
+                            <h5>Web前端 <span class="color-heading pull-right">60%</span></h5>
+                            <div class="progress" style="background-color: #4aa6e8">
+                                <div class="progress-bar bg-color-base" role="progressbar" data-width="60" style="width: 60%;background: #592382!important;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-box">
+                            <h5>Other（Python、Android） <span class="color-heading pull-right" >30%</span></h5>
+                            <div class="progress" style="background-color: #4aa6e8">
+                                <div class="progress-bar bg-color-base" role="progressbar" data-width="30" style="width: 30%;background: #592382!important;"></div>
+                            </div>
+                        </div>
+                        <!-- End Progress Box -->
+                    </div>
+                </div>
+                
+                <div class="row" style="margin-top: 50px!important;">
+                    <div class="col-sm-3 sm-margin-b-30" >
+                        <div class="text-right sm-text-left">
+                            <h2 class="margin-b-0">关于网站</h2>
+                            <p class="my_p">the website</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-sm-offset-1">
+                        <div class="margin-b-60">
+                            <p class="my_p">本站是我的个人网站2.0版本（第一版使用WordPress搭建）</p>
+                            <p class="my_p">仅记录自己学习/工作/生活历程等</p>
+                            <p class="my_p">如果我的网站对你有用，欢迎来访，我会不定期更新</p>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="row" style="margin-top: 50px!important;">
+                        <div class="col-sm-3 sm-margin-b-30">
+                            <div class="text-right sm-text-left">
+                                <h2 class="margin-b-0">联系我</h2>
+                                <p class="my_p">Hire me</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-8 col-sm-offset-1">
+                            <div class="row">
+                                <div class="col-md-3 col-xs-6">
+                                    <h5>Email</h5>
+                                    <a href="#" style="color:#18b5ad">1099909438@qq.com</a>
+                                </div>
+                                <div class="col-md-3 col-xs-6">
+                                    <h5>QQ</h5>
+                                    <a href="#" style="color:#18b5ad">1099909438</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                <!--// end row -->
+            </div>
+        </div>
+        
+    
+    <script type="text/javascript" src="js/lib/jquery.js"></script> 
+    <script type="text/javascript" src="js/hm.js"></script> 
+    <script type="text/javascript" src="js/lib/jquerycookie.js"></script> 
+    <script type="text/javascript" src="js/lib/jqueryeasing.js"></script> 
+    <script type="text/javascript" src="js/lib/jqueryresize.js"></script> 
+    <script type="text/javascript" src="js/lib/libs/tween.min.js"></script> 
+    <script type="text/javascript" src="js/lib/three.js"></script>
+    <script type="text/javascript" src="js/lib/controls/TrackballControls.js"></script> 
+    <script type="text/javascript" src="js/lib/renderers/CSS3DRenderer.js"></script>
+    <script type="text/javascript" src="js/lib/Detector.js"></script>
+    <script type="text/javascript" src="js/lib/RequestAnimationFrame.js"></script> 
+    <script type="text/javascript" src="js/api.js"></script>
+  </body>
+</html>

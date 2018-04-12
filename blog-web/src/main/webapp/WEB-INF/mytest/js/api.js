@@ -371,6 +371,10 @@ $(function() {
         $("#mymenu").css("top","45px");
         $("#mymenu2").css("right","20px");
         $("#mymenu").children("li").css("height","40px");
+        $(".my_svg").each(function(){
+            $(this).attr("src", $(this).attr("data")+"_32.svg");
+        })
+        $("#mylogoshowbtn").click();
     } else {
         $(".my_svg").each(function(){
             $(this).attr("src", $(this).attr("data")+"_64.svg");
